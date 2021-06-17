@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 
 router.post('/shortenurl', async (req, res) => { 
     const urlCode = makeRandom(digits)
-    const query = { shorten_url: '0Gg6T4' }; 
+    const query = { shorten_url: urlCode }; 
     const urlcount = await Url.countDocuments(query); 
 
     if( urlcount === 0 ){   
