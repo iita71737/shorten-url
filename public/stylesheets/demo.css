@@ -1,0 +1,48 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerText,
+.showText,
+.showUrl {
+  margin: 0.6rem;
+}
+
+.showText {
+  width: 600px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.showUrl {
+  background-color: bisque;
+  width: 100%;
+  border-radius: 15px;
+  height: 50px;
+}
+
+.shorten-url-str {
+  background-color: bisque;
+  width: 100%;
+  font-size: 16px;
+  text-align: center;
+  line-height: 50px;
+  color: blue;
+  border-radius: 15px;
+}
+
+.btn {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+}
