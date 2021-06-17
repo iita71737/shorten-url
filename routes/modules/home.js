@@ -4,7 +4,7 @@ const router = express.Router()
 const makeRandom = require('../../public/javascripts/makeRandom')
 // 引用 Todo model
 const Url = require('../../models/Url')
-// 定義首頁路由
+
 const digits = 5
 
 router.get("/", async (req, res) => {
@@ -25,8 +25,12 @@ router.post('/shortenurl', async (req, res) => {
       Url.create({
         shorten_url: urlCode,
         origin_url: req.body.inputUrl  
-      }).then( () =>{
-        res.render('show')
+      }).then(  async () =>{
+        const result = await Url.findOne(query).lean()
+        console.log(result)
+        res.render('show', {
+              result
+          })
       }).catch( (err) => {
         console.log(err)
       })
@@ -37,9 +41,6 @@ router.post('/shortenurl', async (req, res) => {
             result
         })
     }
-      // 確認沒有重複，實際存入資料庫
-      
-
 })
 
 // 匯出路由模組
