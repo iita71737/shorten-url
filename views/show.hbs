@@ -9,7 +9,7 @@
         <p>Success! Please use this link:</p>
     </div>
     <div class="showUrl">
-        <input type="text" id="shorten-url-str" class="shorten-url-str" value="https://aqueous-lowlands-99379.herokuapp.com/{{result.shorten_url}}" id="myInput" readonly>
+        <input type="text" id="shorten-url-str" class="shorten-url-str" value="{{herokuPrefix}}{{result.shorten_url}}" id="myInput" readonly>
     </div>
     <div class="btn">
         <button type="button" class="btn btn-primary copyBtn" id="copyBtn">按我複製連結</button>

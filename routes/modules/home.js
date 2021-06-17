@@ -4,7 +4,7 @@ const router = express.Router()
 const makeRandom = require('../../public/javascripts/makeRandom')
 // 引用 Todo model
 const Url = require('../../models/Url')
-
+const herokuPrefix = process.env.PORT || 'http://localhost:3000/'
 const digits = 5
 
 router.get("/", async (req, res) => {
@@ -29,27 +29,38 @@ router.post('/shortenurl', async (req, res) => {
         const result = await Url.findOne(query).lean()
         //console.log(result)
         res.render('show', {
-              result
+              result,
+              herokuPrefix
           })
       }).catch( async(err) => {
         const err_query = { origin_url: req.body.inputUrl }
         const result = await Url.findOne(err_query).lean()
         res.render('show', {
-              result
+              result,
+              herokuPrefix
           })
       })
     } else {
       const result = await Url.findOne(query).lean()
       //console.log(result)
       res.render('show', {
-            result
+            result,
+            herokuPrefix
         })
     }
 })
 
-// router.get(`/${urlCode}`, async (req, res) => { 
-//   res.render('show')
-// })
+router.get('/:id', async (req, res) => { 
+  try {
+     const replyString = req.params.id
+     const query = {shorten_url: replyString}
+     const result = await Url.findOne(query).lean()
+       console.log(result)
+       res.redirect(`${result.origin_url}`);
+  }catch (e) {
+        console.warn(e)
+    }
+})
 
 // 匯出路由模組
 module.exports = router
