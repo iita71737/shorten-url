@@ -6,8 +6,8 @@
 
 ## Picture
 
-![Screenshot](https://github.com/iita71737/shorten-url/blob/master/public/image/shorten-url-img.png)
-![Screenshot](https://github.com/iita71737/shorten-url/blob/master/public/image/shorten-url-img2.png)
+![Screenshot](https://github.com/iita71737/shorten-url/blob/master/public/image/shorten-url-img.PNG)
+![Screenshot](https://github.com/iita71737/shorten-url/blob/master/public/image/shorten-url-img2.PNG)
 
 ## Environment SetUp
 
