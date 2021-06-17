@@ -2,19 +2,19 @@
 
 運用 Express & MongoDB 打造的網頁，進行短網址生成。
 
-[Website](https://.herokuapp.com)連結
+[Demo on Heroku](https://aqueous-lowlands-99379.herokuapp.com/)
 
 ## Picture
 
-![Screenshot](https://i.imgur.com/PyiYMeS.jpg)
+![Screenshot](https://github.com/iita71737/shorten-url/blob/master/public/image/shorten-url-img.png)
+![Screenshot](https://github.com/iita71737/shorten-url/blob/master/public/image/shorten-url-img2.png)
 
 ## Environment SetUp
 
 - [MongoDB](https://www.mongodb.com/download-center/community) - Database
-
-* [Node.js](https://nodejs.org/en/) - JavaScript runtime built
-
+- [Node.js](https://nodejs.org/en/) - JavaScript runtime built
 - [Express](https://expressjs.com/zh-tw/starter/installing.html) - Node.js web framework
+- [Mongoose](https://mongoosejs.com/) - elegant mongodb object modeling for node.js
 
 ## Installing
 
