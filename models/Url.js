@@ -8,8 +8,9 @@ const urls = new schema({
     },
     origin_url: {
         type:String,
-        require:true
+        require:true,
+        unique: true 
     }
 })
-
+mongoose.set('useCreateIndex', true);
 module.exports = mongoose.model('Url', urls )

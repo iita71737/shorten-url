@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
 
 router.post('/shortenurl', async (req, res) => { 
     const urlCode = makeRandom(digits)
-    const query = { shorten_url: urlCode }; 
+    const query = { shorten_url: urlCode, origin_url: req.body.inputUrl }; 
     const urlcount = await Url.countDocuments(query); 
 
     if( urlcount === 0 ){   
@@ -27,21 +27,29 @@ router.post('/shortenurl', async (req, res) => {
         origin_url: req.body.inputUrl  
       }).then(  async () =>{
         const result = await Url.findOne(query).lean()
-        console.log(result)
+        //console.log(result)
         res.render('show', {
               result
           })
-      }).catch( (err) => {
-        console.log(err)
+      }).catch( async(err) => {
+        const err_query = { origin_url: req.body.inputUrl }
+        const result = await Url.findOne(err_query).lean()
+        res.render('show', {
+              result
+          })
       })
     } else {
       const result = await Url.findOne(query).lean()
-      console.log(result)
+      //console.log(result)
       res.render('show', {
             result
         })
     }
 })
+
+// router.get(`/${urlCode}`, async (req, res) => { 
+//   res.render('show')
+// })
 
 // 匯出路由模組
 module.exports = router
