@@ -4,7 +4,6 @@ const router = express.Router()
 const makeRandom = require('../../public/javascripts/makeRandom')
 // 引用 Todo model
 const Url = require('../../models/Url')
-const herokuPrefix = process.env.PORT || 'http://localhost:3000/'
 const digits = 5
 
 router.get("/", async (req, res) => {
@@ -17,6 +16,9 @@ router.get("/", async (req, res) => {
 })
 
 router.post('/shortenurl', async (req, res) => { 
+    const protocol = req.protocol
+    const host = req.headers.host
+
     const urlCode = makeRandom(digits)
     const query = { shorten_url: urlCode, origin_url: req.body.inputUrl }; 
     const urlcount = await Url.countDocuments(query); 
@@ -30,14 +32,16 @@ router.post('/shortenurl', async (req, res) => {
         //console.log(result)
         res.render('show', {
               result,
-              herokuPrefix
+              protocol,
+              host
           })
       }).catch( async(err) => {
         const err_query = { origin_url: req.body.inputUrl }
         const result = await Url.findOne(err_query).lean()
         res.render('show', {
               result,
-              herokuPrefix
+              protocol,
+              host
           })
       })
     } else {
@@ -45,7 +49,8 @@ router.post('/shortenurl', async (req, res) => {
       //console.log(result)
       res.render('show', {
             result,
-            herokuPrefix
+            protocol,
+            host
         })
     }
 })
